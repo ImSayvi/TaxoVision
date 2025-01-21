@@ -1,0 +1,25 @@
+<annotation>
+	<folder>my-project-name</folder>
+	<filename>OIP-zrG4e3AjIH8dt0EF2m_YIAHaKc.jpeg</filename>
+	<path>/my-project-name/OIP-zrG4e3AjIH8dt0EF2m_YIAHaKc.jpeg</path>
+	<source>
+		<database>Unspecified</database>
+	</source>
+	<size>
+		<width>213</width>
+		<height>300</height>
+		<depth>3</depth>
+	</size>
+	<object>
+		<name>butterfly</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>3</xmin>
+			<ymin>49</ymin>
+			<xmax>129</xmax>
+			<ymax>150</ymax>
+		</bndbox>
+	</object>
+</annotation>
