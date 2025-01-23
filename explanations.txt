@@ -1,0 +1,44 @@
+# Wyjaśnienie kodu - Detekcja Obiektów w PyTorch
+
+## 1. Importowanie bibliotek
+Kod używa następujących bibliotek:
+- `torch` i `torchvision` - główne biblioteki do uczenia maszynowego w PyTorch.
+- `PIL` - biblioteka do przetwarzania obrazów.
+- `json` - do wczytywania etykiet z plików JSON.
+
+## 2. Klasa `CustomDataset`
+### Cel:
+Tworzy własny zbiór danych kompatybilny z PyTorch.
+
+### Kluczowe elementy:
+- `__init__`: Przyjmuje ścieżki do folderów ze zdjęciami i etykietami.
+- `__len__`: Zwraca liczbę zdjęć w zbiorze.
+- `__getitem__`: Ładuje zdjęcie i odpowiadający mu plik JSON z etykietami.
+    - `Image.open(img_path).convert("RGB")` - wczytuje obraz jako RGB.
+    - `json.load(f)` - ładuje etykiety (współrzędne i klasy obiektów).
+    - Konwersja etykiet na tensory PyTorch.
+
+## 3. Transformacje obrazów
+Obrazy są konwertowane do tensorów i zmieniane na rozmiar `224x224` pikseli.
+
+## 4. Tworzenie zbioru danych i ładowarki
+- `DataLoader` pozwala na ładowanie obrazów partiami (`batch_size=4`).
+- `iter(dataloader)` pobiera pierwszą paczkę danych do testu.
+
+## 5. Wybór modelu detekcji obiektów
+- `models.fasterrcnn_resnet50_fpn(pretrained=True)` - gotowy model Faster R-CNN.
+- `model.eval()` - ustawia tryb ewaluacji (bez trenowania).
+
+## 6. Wykrywanie obiektów
+- `with torch.no_grad()`: Wyłącza obliczanie gradientów (przyspiesza działanie).
+- `model(images)`: Przetwarza batch zdjęć i zwraca wyniki.
+
+## 7. Wyniki detekcji
+Dla każdego obrazu:
+- `boxes` - współrzędne wykrytych obiektów.
+- `labels` - numery klas obiektów.
+- `scores` - pewność modelu co do wykrycia.
+
+### Możliwe rozszerzenia:
+- Wizualizacja wyników (np. rysowanie bounding boxów na obrazach).
+- Uczenie własnego modelu na innych danych.
