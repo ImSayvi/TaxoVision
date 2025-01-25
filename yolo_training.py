@@ -56,7 +56,9 @@ transform = T.Compose([
 ])
 
 # Tworzenie zbioru danych
-dataset = YoloDataset("path/to/images", "path/to/labels", transform=transform)
+dataset = YoloDataset("C:/Users/sirre/OneDrive/Pulpit/programming/github/TaxoVision/images/butterfly",
+                       "C:/Users/sirre/OneDrive/Pulpit/programming/github/TaxoVision/images/butterfly/butterfly_yolo",
+                         transform=transform)
 dataloader = DataLoader(dataset, batch_size=4, shuffle=True)
 
 # Definicja sieci neuronowej
